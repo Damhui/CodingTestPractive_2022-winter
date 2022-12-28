@@ -1,4 +1,75 @@
 파이썬 문법
+
 * 나누기 했을때 소수로 나오게 하려면?
-=> (float)로 형변환하고 나누기! + 소수점 자릿수 제한하고 싶으면 round(실수, 표기할 자릿수) 이용
-cf. / : 몫이 정수로 나옴. % : 나머지. 
+  => (float)로 형변환하고 나누기! + 소수점 자릿수 제한하고 싶으면 round(실수, 표기할 자릿수) 이용
+  cf. // : 나눗셈 결과가 int로 나옴. / : 나눗셈 결과가 float로 나옴. % : 나머지
+  
+* for 반복문을 통해 리스트 순회하려면?
+  => for i in range(len(arr)):
+      ~~
+      
+* 역순 리스트를 만드려면?
+newarr = []
+1. 뒤에서부터 순회해서 newarr 앞에부터 append
+for i in range(len(oldarr)-1, -1, -1):
+      newarr.append(oldarr[i])
+2. 음수 인덱스 사용
+for i in range (1, len(oldarr)+1):
+      newarr.append(oldarr[-i])
+3. 앞에서부터 순회해서 newarr 뒤에부터 값 할당(값 할당하기 위해서는 미리 정해진 크기만큼 값 초기화해야함)
+newarr = [0 for i in range(len(oldarr))] #미리 할당해놓고 값을 바꿈
+   for j in range (len(oldarr)):
+      newarr[len(oldarr)-1-j] = oldarr[j]
+4. reverse()를 통해 oldarr 뒤집기
+oldarr.reverse();
+   for i in range(len(oldarr)):
+      newarr.append(oldarr[i]);
+5. reversed()를 통해 oldarr 임시로 뒤집기
+for item in reversed(oldarr):
+    newarr.append(item);
+    
+* && || 대신 and or 사용
+* 증감연산자 -- ++ 없음. += 1 -=1 사용
+* 문자열도 리스트다. 인덱스 0
+
+* 문자열에서 특정 문자 제거 방법 2가지
+1. str.replace(A,B) : A문자열을 B로 바꾸기
+2. re.sub(A,B,str) : A문자열을 B로 바꾸기
+
+* 문자열 원하는 index로 자르기
+1. str[시작인덱스, 끝 인덱스+1]
+
+* 리스트 정렬
+1. sort() - 리스트 본체 정렬
+list.sort() : 기본 오름차순
+list.sort(reverse=True) : 내림차순
+list.sort(key=len) : len을 기준으로 길이가 짧은것부터 긴 것 순서(오름차순)
+2. sorted() - 정렬된 리스트를 반환
+sorted(list) : 오름차순
+reversed(list) : 내림차순
+
+* 문자열 안에 특정 문자열이 포함되어 있는지 확인
+1. if A in B : B 문자열 안에 A 문자열이 있는지
+2. B.find(A) : B 문자열 안에 A 문자열이 있으면 그 위치에 해당하는 index 리턴. 없으면 -1 리턴
+
+* char을 int로 바꾸는 법
+ord('a') #97
+chr(97) #'a'
+
+cf. C처럼 'a'-'a' 안됨!!
+
+* map : 리스트의 요소를 지정된 함수로 처리해주는 함수
+- list(map(함수, 리스트)) 또는 tuple(map(함수, 튜플))
+예1) 
+a = [1.2, 2.2, 3.2, 4.2]
+방법1. for loop
+for i in range(len(a)):
+  a[i] = int(a[i])
+방법2. map
+a = list(map(int, a))
+예2)
+a = list(map(str,range(10))) # ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+* map과 input().split() 결합
+input().split() # ['10', '20'] 
+list(map(int, input().split())) # [10, 20]
+
