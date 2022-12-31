@@ -37,17 +37,53 @@ for item in reversed(oldarr):
 1. str.replace(A,B) : A문자열을 B로 바꾸기
 2. re.sub(A,B,str) : A문자열을 B로 바꾸기
 
+* 문자열에서 특정 문자 바꾸기
+1. str.replace(A,B) : A문자열을 B로 바꾸기
+2. re.sub(A,B,str) : A문자열을 B로 바꾸기
+3. str.maketrans('abcde', '12345') : a를 1로, b를 2로, ... , e를 5로 바꿈
+
+* 문자열에서 특정 인덱스의 문자 바꾸기
+1. list() + join() : 문자열을 리스트로 만들어서 쪼개고 수정하고 다시 하나의 문자열로 합치기 
+예)
+a = 'ABC'
+a = list(a) 
+a[0] = 'a'
+a = ''.join(a)
+cf.
+str[index] = A # 오류. 문자열은 immutable type이라 수정할 수 없음
+str.replace(str[index], A) : 오류. replace는 인덱스로 접근 불가
+
 * 문자열 원하는 index로 자르기
 1. str[시작인덱스, 끝 인덱스+1]
 
 * 리스트 정렬
 1. sort() - 리스트 본체 정렬
-list.sort() : 기본 오름차순
+list.sort() : 기본 오름차순 (문자열은 알파벳 순)
 list.sort(reverse=True) : 내림차순
 list.sort(key=len) : len을 기준으로 길이가 짧은것부터 긴 것 순서(오름차순)
 2. sorted() - 정렬된 리스트를 반환
 sorted(list) : 오름차순
 reversed(list) : 내림차순
+cf. 문자열 자체를 정렬할 때는 str.sort() 하면 오류!! 문자열은 immutable type이라 수정할 수 없음
+=> sorted() + join()
+sorted(str) : 리턴타입이 list이므로 다시 문자열로 만드려면 join 해야함 
+예) ''.join(sorted(str))
+
+* 리스트 중복 제거 
+1. set 이용 -> 순서 보장X
+예)arr = [1,2,2,3,1,4]
+list(set(arr))
+2. for 반복문 이용
+예) arr = [1,2,2,3,1,4]
+    result = []
+    for i in arr:
+      if i not in result:
+        result.append(i)
+3. dictionary 이용
+dict.fromkeys(iterable) 메서드 : 인자로 들어온 iterable 데이터를 key값으로 해서 딕셔너리 자료형을 만듬 (key는 중복x)
+예)arr = [1,2,2,3,1,4]
+new_dict = dict.fromkeys(arr) # {1:None, 2:None, 3:None, 4:None}
+list(new_dict) # [1,2,3,4]
 
 * 리스트 삽입
 1. array.append(삽입할 값) : 원소 마지막에 추가
@@ -98,7 +134,21 @@ max(array)
 *리스트에서 target의 index 찾기
 array.index(target)
 
+* 최대공약수
+math.gcd(66,22,11) #11
+* 최소공배수
+math.lcm(66,22,11) #66
 
+* count() : 문자열(iterable 자료형 가능) 안에서 찾고 싶은 문자의 개수를 찾을 때
+1. 문자열에서 사용
+s = 'oooyy'
+s.count('y') #2
+- 특정 범위 지정 (끝 인덱스는 포함 안됨)
+s.count('y',0,3) # 0 (s[0]~s[2] 내에서 'y'의 개수)
+
+2. 리스트에서 사용
+arr = [1,1,1,2,3]
+arr.count(1) #3
 
 
 
