@@ -33,6 +33,11 @@ for item in reversed(oldarr):
 * 증감연산자 -- ++ 없음. += 1 -=1 사용
 * 문자열도 리스트다. 인덱스 0
 
+* 문자열 순서 뒤집기
+1. slice이용 => str[::-1]
+2. reversed()이용 => "".join(reversed(str))
+3. for loop 이용=> 
+
 * 문자열에서 특정 문자 제거 방법 2가지
 1. str.replace(A,B) : A문자열을 B로 바꾸기
 2. re.sub(A,B,str) : A문자열을 B로 바꾸기
@@ -63,7 +68,7 @@ list.sort(reverse=True) : 내림차순
 list.sort(key=len) : len을 기준으로 길이가 짧은것부터 긴 것 순서(오름차순)
 2. sorted() - 정렬된 리스트를 반환
 sorted(list) : 오름차순
-reversed(list) : 내림차순
+sorted(list, key = ..., reverse = True) : 내림차순
 3. key가 여러개일때 (다중조건 정렬)
 https://school.programmers.co.kr/learn/courses/30/lessons/120880
 
@@ -80,7 +85,6 @@ sort() 불가. sorted() 이용
 2. 키를 기준으로 내림차순 정렬 => sorted(dict.items(), reverse=True)
 3. 값을 기준으로 오름차순 정렬 => sorted(dict.items(), key = lambda x:x[1])
 4. 값을 기준으로 내림차순 정렬 => sorted(dict.items(), key = lambda x:x[1], reverse=True)
-
 
 * 리스트 중복 제거 
 1. set 이용 -> 순서 보장X
@@ -106,6 +110,14 @@ list(new_dict) # [1,2,3,4]
 * 리스트 삭제
 1. del array[index]
 2. array.remove(삭제할 값)
+
+* 리스트 복사
+- deep 복사 : 같은 메모리 주소 (주소 복사)
+list1 = list2 
+- shallow 복사 : 다른 메모리 주소 (값 복사)
+1. 슬라이싱 list2 = list1[:]
+2. list()함수 list2 = list(list1)
+3. copy()함수 list2 = list1.copy()
 
 * 문자열 안에 특정 문자열이 포함되어 있는지 확인
 1. if A in B : B 문자열 안에 A 문자열이 있는지
@@ -165,7 +177,33 @@ arr.count(1) #3
 
 https://school.programmers.co.kr/learn/courses/30/lessons/120812
 
+* 딕셔너리
+dict = {...}
+dict.keys()
+dict.values()
+dict.items()
 
+* 순열, 조합
+import iteratools
+- 순열
+예)
+arr = ['A','B','C']
+l = list(iteratools.permutations(arr,2))
+print(l) # [('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'C'), ('C', 'A'), ('C', 'B')]
+- 조합
+m = list(iteratools.combinations(arr,2))
+print(m) # [('A', 'B'), ('A', 'C'), ('B', 'C')]
+
+* 리스트에서 원하는 값에 따른 인덱스 찾기
+리스트명.index(원하는 값,탐색시작인덱스, 탐색끝인덱스)
+
+* 진수 변환
+- 10진수를 2,8,16 진수로 변환
+bin(), oct(), hex()
+- 2,8,16진수를 10진수로 변환
+int('0b010010',2)
+int('0o52',8)
+int('ox2a',16)
 
 
 
