@@ -1,5 +1,46 @@
 파이썬 문법
 
+* 1+2+...+n = (n+1)*n/2
+
+* range()
+- range(0): empty 리스트 [] (0부터 0 이전까지의 숫자는 존재하지 않음)
+- 세번째 파라미터(간격)에 0이 오면 오류남
+
+* int() : 정수형으로 형변환
+- int(str) 에서 문자열의 부호도 인식해서 변환해줌
+
+* 구분자.join(문자열) : 문자열 리스트를 문자열로 합쳐줌
+
+* zip()
+- 입력인자: 여러개의 순회가능한(iterable)객체
+- 출력인자: 각 객체가 담고있는 원소를 튜플 형태로 차례로 접근할 수 있는 반복자(iterator)를 반환
+- when use? 서로다른 리스트(iterable) 객체들의 원소를 쌍으로 묶어서 튜플로 만들고 싶을때
+예1) 병렬처리
+for number, upper, lower in zip("12345", "ABCDE", "abcde"):
+...     print(number, upper, lower)
+...
+1 A a
+2 B b
+3 C c
+4 D d
+5 E e
+예2) unzip
+>>> numbers = (1, 2, 3)
+>>> letters = ("A", "B", "C")
+>>> pairs = list(zip(numbers, letters))
+>>> print(pairs)
+[(1, 'A'), (2, 'B'), (3, 'C')]
+>>> numbers, letters = zip(*pairs)
+>>> numbers
+(1, 2, 3)
+>>> letters
+('A', 'B', 'C')
+예3) 사전변환
+* dict()는 키와 값으로 이루어진 튜플을 받으면 사전이 생성됨
+>>> dict(zip(["year", "month", "date"], [2001, 1, 31]))
+{'year': 2001, 'month': 1, 'date': 31}
+- 주의사항 : 인자의 길이가 다를때, 가장 짧은 인자를 기준으로 엮이고 나머지는 버려짐
+
 * 나누기 했을때 소수로 나오게 하려면?
   => (float)로 형변환하고 나누기! + 소수점 자릿수 제한하고 싶으면 round(실수, 표기할 자릿수) 이용
   cf. // : 나눗셈 결과가 int로 나옴. / : 나눗셈 결과가 float로 나옴. % : 나머지
@@ -7,8 +48,7 @@
 * for 반복문을 통해 리스트 순회하려면?
   => for i in range(len(arr)):
       ~~
-  cf. range(0): empty 리스트 [] (0부터 0 이전까지의 숫자는 존재하지 않음)
-      
+
 * 역순 리스트를 만드려면?
 newarr = []
 1. 뒤에서부터 순회해서 newarr 앞에부터 append
@@ -204,6 +244,16 @@ bin(), oct(), hex()
 int('0b010010',2)
 int('0o52',8)
 int('ox2a',16)
+
+* 숫자가 정수인지 소수인지 알아내기
+1) 숫자가 정수 또는 부동 소수점 유형인지 여부를 결정합니다.:isinstance()
+isinstance(object, type)
+예) print(isinstance(i, int)) # True
+2) float 유형 숫자가 정수인지 판별합니다(소수점 0자리).:방법1. float.is_integer(), 방법2. float % 1 == 0인지
+예) print(f.is_integer()) # False
+3) 숫자 문자열이 정수인지 확인 : str.isdigit()
+예) str.isdigit(s1)  #False
+
 
 
 
