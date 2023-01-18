@@ -263,8 +263,38 @@ isinstance(object, type)
 * 소수의 개수
 - 방법2. 에라토스테네스의 체 : 소수를 찾으면 그 소수의 배수는 모두 제외시키자
 
+* heap : 정렬 방법 중 하나. 최소값만 리턴 -> O(logN)
+from heapq import heappush,heappop,heapify
 
+* 해시 : 탐색에 특화된 자료구조 -> 평균 O(1), 최악 O(N)
+[파이썬에서 구현]
+딕셔너리 이용
+- 찾고자하는 키 in 딕셔너리 -> T/F 리턴
+- 딕셔너리.get(찾고자하는 키) -> 키값에 해당하는 값을 리턴
+- dict.items()
+- dict.values()
+- dict.keys()
 
+[장점]
+- 해시 충돌이 없는 상태에서 배열, 리스트 같은 선형적인 구조는 물론 트리와 같은 선형적인 구조보다 빠른 탐색
+- 해시를 사용하기에 해시 값을 알아도 key를 예측하기 어려움
+[단점]
+- 해시 충돌 발생 시 탐색이 시간 복잡도 O(N)에 점점 수렴함
+- 정렬이나 순차적인 메모리 저장이 필요한 경우 적합하지 않음
+- 해시 함수의 성능에 따라 해시 테이블 전체 성능이 크게 영향을 받는다.
 
+* startswith()
+
+* global / nonlocal 키워드
+var = "aa" # 전역변수
+def outer():
+    var = "bb" # global 쓰면 전역변수 가리킴, global안쓰면 outer()내의 지역변수 생성
+    def inner():
+        var = "cc" # nonlocal 쓰면 outer()의 비지역변수 가리킴, nonlocal 안쓰면 inner()내의 지역변수 생성
+
+- global 키워드 : 일반 함수 내에서 전역(global/module) 변수를 대상
+동일한 이름의 지역 변수를 생성하지 않고, 전역 변수의 값을 함수 내부에서 변경
+(함수 안에서 변수 앞에 global 키워드를 붙여주면 해당 변수는 새로운 지역 변수가 되지 않고 함수 밖에서 이미 선언된 전역 변수를 가리키게 됨)
+- nonlocal 키워드 : 중첩 함수 내에서 비지역(nonlocal/closing) 변수를 대상
 
 
