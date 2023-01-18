@@ -121,6 +121,8 @@ sorted(str) : 리턴타입이 list이므로 다시 문자열로 만드려면 joi
 
 * 딕셔너리 정렬
 sort() 불가. sorted() 이용
+정렬은 리스트/튜플만 가능하므로, dict.items()를 이용해 각 (key,value) 꼴로 튜플형요소로 바꾸고 전체를 리스트로 만듬 
+=> {key:value, key:value,...} --> [(key,value),(key,value),...]
 1. 키를 기준으로 오름차순 정렬 => sorted(dict.items())
 2. 키를 기준으로 내림차순 정렬 => sorted(dict.items(), reverse=True)
 3. 값을 기준으로 오름차순 정렬 => sorted(dict.items(), key = lambda x:x[1])
@@ -313,6 +315,22 @@ Counter(a) # {'d':4, 'c':3, 'b':2, 'a':1}
 
 => 리스트 요소 전체의 개수를 셀 때는 count() 말고 딕셔너리인 Counter나 해시 사용!!!
 
-
+* 집합 set
+[함수]
+- 값 1개만 추가 : add
+>>> s1 = set([1, 2, 3])
+>>> s1.add(4)
+>>> s1
+{1, 2, 3, 4}
+- 값 여러개 추가 : update
+>>> s1 = set([1, 2, 3])
+>>> s1.update([4, 5, 6])
+>>> s1
+{1, 2, 3, 4, 5, 6}
+- 특정값 제거 : remove
+>>> s1 = set([1, 2, 3])
+>>> s1.remove(2)
+>>> s1
+{1, 3}
 
 
