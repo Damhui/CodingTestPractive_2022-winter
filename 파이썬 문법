@@ -229,16 +229,18 @@ dict.keys()
 dict.values()
 dict.items()
 
-* 순열, 조합
+* 순열, 조합, 중복순열, 중복조합
 import iteratools
-- 순열
+- 순열 permutations(반복 가능한 객체, r)
 예)
 arr = ['A','B','C']
 l = list(iteratools.permutations(arr,2))
 print(l) # [('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'C'), ('C', 'A'), ('C', 'B')]
-- 조합
+- 조합 combinations(반복 가능한 객체, r)
 m = list(iteratools.combinations(arr,2))
 print(m) # [('A', 'B'), ('A', 'C'), ('B', 'C')]
+- 중복순열 product(반복 가능한 객체, repeat=1)
+- 중복조합 combinations_with_replacement(반복 가능한 객체, r)
 
 * 리스트에서 원하는 값에 따른 인덱스 찾기
 리스트명.index(원하는 값,탐색시작인덱스, 탐색끝인덱스)
