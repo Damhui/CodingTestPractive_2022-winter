@@ -199,11 +199,12 @@ str.isdigit()
 *리스트에서 max값 찾기
 max(array)
 
-*리스트에서 target의 index 찾기 : index(), find()
+*리스트에서 target의 index 찾기 : index(), find(), rfind()
 형태 - '변수. find((sub [, start [, end]]))' / '변수. index((sub [, start [, end]]))' 
 차이점 - index()는 target이 없으면 에러발생, find()는 target이 없으면 -1 반환, 문자열에서만 사용가능
 예) array.index(target)
-a.find('o', 1, 3) # 변수명.find(
+a.find('o', 1, 3) # 변수명.find(찾을 대상, 시작인덱스, 끝인덱스
+- rfind() : 오른쪽에서부터 찾음 vs find() : 왼쪽에서부터 찾음
 
 * 최대공약수
 math.gcd(66,22,11) #11
@@ -266,6 +267,7 @@ isinstance(object, type)
 - 범위를 제곱수(num**0.5)로 하자
 
 * 소수의 개수
+- 방법1. 범위를 제곱수(num**0.5)로 하자 
 - 방법2. 에라토스테네스의 체 : 소수를 찾으면 그 소수의 배수는 모두 제외시키자
 
 * heap : 정렬 방법 중 하나. 최소값만 리턴 -> O(logN)
