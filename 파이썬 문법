@@ -230,6 +230,12 @@ dict.keys()
 dict.values()
 dict.items()
 
+* defaultdict() : 값을 지정하지 않은 키는 디폴트 값으로 함
+ex) from collections import defaultdict
+table = defaultdict(list)
+table['key1'] # [] -> 값을 지정하지 않았으므로 디폴트 값인 빈 리스트로 초기화
+table['key2']='test' -> 값을 지정하였을때는 지정한 값으로 초기화
+
 * 순열, 조합, 중복순열, 중복조합
 import iteratools
 - 순열 permutations(반복 가능한 객체, r)
