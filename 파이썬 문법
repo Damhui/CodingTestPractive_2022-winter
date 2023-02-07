@@ -278,6 +278,7 @@ isinstance(object, type)
 
 * heap : 정렬 방법 중 하나. 최소값만 리턴 -> O(logN)
 from heapq import heappush,heappop,heapify
+- 기본 : min heap임. max heap 만들려면 음수로 바꿔서 넣고 pop하고 나서 다시 음수 붙여주기!!
 
 * 해시 : 탐색에 특화된 자료구조 -> 평균 O(1), 최악 O(N)
 [파이썬에서 구현]
